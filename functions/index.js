@@ -14,7 +14,8 @@ const {
     loginUser,
     signUpUser,
     uploadProfilePhoto,
-    getUserDetail
+    getUserDetail,
+    updateUserDetails
 } = require('./APIs/users')
 
 // Todos
@@ -28,6 +29,7 @@ app.put('/todo/:todoId',auth, editTodo);
 app.post('/login', loginUser);
 app.post('/signup', signUpUser);
 app.post('/user/image', auth ,uploadProfilePhoto);
+app.post('/user', auth ,updateUserDetails);
 app.get('/user', auth, getUserDetail);
 
 exports.api = functions.https.onRequest(app);
