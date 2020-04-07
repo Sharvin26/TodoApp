@@ -21,7 +21,7 @@ import Avatar from '@material-ui/core/avatar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { authMiddleWare } from '../util/auth'
+import { authMiddleWare } from '../util/auth';
 
 const drawerWidth = 240;
 
@@ -55,7 +55,7 @@ const styles = (theme) => ({
 		zIndex: '1000',
 		height: '31px',
 		width: '31px',
-		left: '50%',
+		left: '45%',
 		top: '35%'
 	},
 	toolbar: theme.mixins.toolbar
@@ -111,8 +111,8 @@ class home extends Component {
 				});
 			})
 			.catch((error) => {
-				if(error.response.status === 403) {
-					this.props.history.push('/login')
+				if (error.response.status === 403) {
+					this.props.history.push('/login');
 				}
 				console.log(error);
 				this.setState({ errorMsg: 'Error in retrieving the data' });
@@ -120,7 +120,7 @@ class home extends Component {
 	};
 
 	render() {
-		const { classes } = this.props;		
+		const { classes } = this.props;
 		if (this.state.uiLoading === true) {
 			return (
 				<div className={classes.root}>

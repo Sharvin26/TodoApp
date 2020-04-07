@@ -84,7 +84,7 @@ class signup extends Component {
 		axios
 			.post('/signup', newUserData)
 			.then((response) => {
-				localStorage.setItem('AuthToken', `${response.data.token}`);
+				localStorage.setItem('AuthToken', `Bearer ${response.data.token}`);
 				this.setState({ 
 					loading: false,
 				});	

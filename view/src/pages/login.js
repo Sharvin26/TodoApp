@@ -55,11 +55,14 @@ class login extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.UI.errors) {
+		if("errors" in nextProps.UI){
+			if (nextProps.UI.errors) {
 			this.setState({
 				errors: nextProps.UI.errors
 			});
 		}
+		}
+		
 	}
 
 	handleChange = (event) => {
@@ -79,12 +82,12 @@ class login extends Component {
 			.post('/login', userData)
 			.then((response) => {
 				localStorage.setItem('AuthToken', `Bearer ${response.data.token}`);
-				this.setState({ 
-					loading: false,
-				});		
+				this.setState({
+					loading: false
+				});
 				this.props.history.push('/');
 			})
-			.catch((error) => {				
+			.catch((error) => {
 				this.setState({
 					errors: error.response.data,
 					loading: false
